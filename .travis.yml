@@ -19,6 +19,8 @@ jobs:
         provider: script
         script: deploy.sh
         skip-cleanup: true
+        on:
+          branch: staging
 
 install:
     - git clone git://github.com/astropy/ci-helpers.git
