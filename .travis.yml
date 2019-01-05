@@ -13,14 +13,12 @@ jobs:
     - name: check notebooks
       script: python -m "nbpages.check_nbs" --commit-range="${TRAVIS_COMMIT_RANGE/.../..}"  # see https://github.com/travis-ci/travis-ci/issues/4596 for why this bit in TRAVIS_COMMIT_RANGE is necessary
     - stage: deploy
-      if: type != "pull_request" AND branch = "master"
+      if: type != "pull_request" AND branch = "staging"
       script: python convert.py
       deploy:
         provider: script
         script: deploy.sh
         skip-cleanup: true
-        on:
-          branch: staging
 
 install:
     - git clone git://github.com/astropy/ci-helpers.git
