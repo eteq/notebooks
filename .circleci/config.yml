@@ -60,7 +60,9 @@ jobs:
               echo "export WORKSPACE=${CIRCLE_WORKING_DIRECTORY}" >> $BASH_ENV
               echo "export REPO_URL=${CIRCLE_REPOSITORY_URL}" >> $BASH_ENV
               source $BASH_ENV
-              ./.circleci/gh_pages_deploy.sh
+              git config --global user.email $GH_EMAIL
+              git config --global user.name $GH_NAME
+              ./gh_pages_deploy.sh
             else
               echo "PR, not deploying..."
               echo "${CIRCLE_PULL_REQUEST}"
