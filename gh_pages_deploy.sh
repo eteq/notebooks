@@ -21,7 +21,7 @@ else
   DEPLOY_BRANCH="${DEPLOY_BRANCH}"
 fi
 if [[ -z "${WORKSPACE}" ]]; then
-  WORKSPACE=".."
+  WORKSPACE="$PWD"
 else
   WORKSPACE="${WORKSPACE}"
 fi
@@ -36,8 +36,9 @@ else
   REMOTE_NAME="${REMOTE_NAME}"
 fi
 
-git clone -b ${DEPLOY_BRANCH} --single-branch ${REPO_URL} /out
-cd /out
+git clone -b ${DEPLOY_BRANCH} --single-branch ${REPO_URL} out
+
+cd out
 
 cp -aR ${WORKSPACE}/* .
 
